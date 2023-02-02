@@ -9,16 +9,36 @@ btnAdd.addEventListener('click', openProducts)
 
 const productsClose = document.createElement('button');
 const productsAdd = document.createElement('button');
-productsClose.textContent = 'close'
-productsAdd.textContent = 'add'
-productsAdd.classList.add('closeProducts')
-productsClose.classList.add('close')
-productsOpen.append(productsClose, productsAdd)
+
+productsClose.textContent = 'close';
+productsAdd.textContent = 'add';
+
+productsAdd.classList.add('closeProducts');
+productsClose.classList.add('close');
+
+productsOpen.append(productsClose, productsAdd);
 
 const closeMenu = () => {
 	productsOpen.style.display = 'none'
+	items.forEach(item => {
+		item.classList.remove('products__active')
+	})
 }
+
 productsClose.addEventListener('click', closeMenu)
+
+productsAdd.addEventListener('click', () => {
+	items.forEach(item => {
+		if (item.classList.contains('products__active')) {
+			document.querySelector('.basket').append(item)
+			productsOpen.style.display = 'none'
+		} else {
+			productsClose.addEventListener('click', closeMenu)
+		}
+	})
+})
+
+
 
 
 const btnCount = document.querySelector('.buttonCount')
@@ -44,22 +64,12 @@ calculateClose.addEventListener('click', closeCalculate)
 
 
 const items = document.querySelectorAll('.products__item');
+console.log(items);
 
 items.forEach(item => {
 	const itemAdd = () => {
-		item.style.backgroundColor = 'yellow'
+		item.classList.toggle('products__active')
 	}
 	item.addEventListener('click', itemAdd)
-})
-
-productsAdd.addEventListener('click', () => {
-	productsOpen.style.display = 'none'
-	items.forEach(item => {
-	const itemAdd = () => {
-		item.style.backgroundColor = 'inherit'
-	}
-	item.addEventListener('click', itemAdd)
-	})
-
 })
 

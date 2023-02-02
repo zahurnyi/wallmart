@@ -110,14 +110,14 @@ table {
 	border: 1px solid #000;
 	position: relative;
 	padding: 0px 10px;
-
 }
 
 .buttonAdd,
 .buttonCount {
-  padding: 1em 2em;
-	font-size: 1.5rem;
+  padding: .1em 1.2em;
+	font-size: 24px;
 	background: rgb(35, 172, 137);
+	border-radius: 15px;
 }
 
 .basket {
@@ -126,11 +126,14 @@ table {
 	flex: 1 1 auto;
 	height: 50%;
 	margin: 0 20px 0 0;
+	border-radius: 25px;
 
 }
 .buttons {
+	height: 25%;
 	display: flex;
 	flex-direction: column;
+	justify-content: space-between;
 }
 
 .products {
@@ -166,5 +169,8 @@ table {
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
+}
 
+.products__active {
+	background-color: yellow;
 }
