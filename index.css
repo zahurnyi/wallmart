@@ -105,11 +105,10 @@ table {
 .wrapper {
   display: flex;
   align-items: center;
-  /* justify-content: center; */
   height: 100vh;
-	border: 1px solid #000;
 	position: relative;
 	padding: 0px 10px;
+	background-color: #439b82;
 }
 
 .buttons {
@@ -124,19 +123,20 @@ table {
 .buttonClear {
   padding: 13px 24px;
 	font-size: 1.5em;
-	background: rgb(35, 172, 137);
+	background: hwb(144deg 23% 3% / 35%);
 	border-radius: 15px;
 }
 
 .basket {
-	border: 1px solid rgb(25, 27, 25);
 	width: 100%;
 	flex: 1 1 auto;
 	height: 50%;
 	margin: 0 20px 0 0;
 	border-radius: 25px;
 	overflow-y: scroll;
-	overflow-x: none;
+	overflow-x: hidden;
+	padding: 10px 20px;
+	background-color: #ffffff8e;
 }
 
 
@@ -157,8 +157,9 @@ table {
 .products__item {
 	border: 1px solid #000;
 	height: 100px;
-	width: 300px;
+	width: 250px;
 	border-radius: 15px;
+	padding: 10px 20px;
 }
 .products__title {
 }
