@@ -112,10 +112,18 @@ table {
 	padding: 0px 10px;
 }
 
+.buttons {
+	height: 50%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
 .buttonAdd,
-.buttonCount {
-  padding: .1em 1.2em;
-	font-size: 24px;
+.buttonCount,
+.buttonClear {
+  padding: 13px 24px;
+	font-size: 1.5em;
 	background: rgb(35, 172, 137);
 	border-radius: 15px;
 }
@@ -129,12 +137,7 @@ table {
 	border-radius: 25px;
 
 }
-.buttons {
-	height: 25%;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-}
+
 
 .products {
 	display: none;
