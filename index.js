@@ -54,12 +54,35 @@ const closeMenu = () => {
 	})
 }
 
+
 const addingProducts = () => {
 	items.forEach(item => {
 	if (item.classList.contains('products__active')) {
 		const basket = document.querySelector('.basket')
 		const clone = item.cloneNode(true)
 		clone.style.width = "100%"
+
+		const counter = document.createElement('div')
+		const counterInput = document.createElement('input')
+		const counterPlus = document.createElement('button')
+		const counterMinus = document.createElement('button')
+		counterInput.value = '1'
+		counterMinus.textContent = '-'
+		counterPlus.textContent = '+'
+		counter.append(counterPlus,counterInput, counterMinus);
+		clone.append(counter)
+
+		counterPlus.addEventListener('click', () => {
+			// counterInput.value += 1;
+			console.log(counterInput.value += 1);
+		});
+		counterMinus.addEventListener('click', () => {
+			counterInput.value -= 1;
+			// if (counterInput.value < 0) {
+			// 	alert('stop')
+			// }
+		});
+
 		basket.append(clone)
 		productsOpen.style.display = 'none'
 		item.classList.remove('products__active')
