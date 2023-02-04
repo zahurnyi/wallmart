@@ -66,18 +66,21 @@ const addingProducts = () => {
 		const counterInput = document.createElement('input')
 		const counterPlus = document.createElement('button')
 		const counterMinus = document.createElement('button')
-		counterInput.value = '1'
+		counterInput.value = 1;
 		counterMinus.textContent = '-'
 		counterPlus.textContent = '+'
 		counter.append(counterPlus,counterInput, counterMinus);
 		clone.append(counter)
 
 		counterPlus.addEventListener('click', () => {
-			// counterInput.value += 1;
-			console.log(counterInput.value += 1);
+			counterInput.value = Number(counterInput.value) + 1;
+			console.log(typeof(counterInput.value));
+
 		});
 		counterMinus.addEventListener('click', () => {
 			counterInput.value -= 1;
+			console.log(typeof(counterInput.value));
+
 			// if (counterInput.value < 0) {
 			// 	alert('stop')
 			// }
