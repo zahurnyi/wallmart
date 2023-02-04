@@ -55,6 +55,8 @@ const closeMenu = () => {
 }
 
 
+
+
 const addingProducts = () => {
 	items.forEach(item => {
 	if (item.classList.contains('products__active')) {
@@ -66,23 +68,41 @@ const addingProducts = () => {
 		const counterInput = document.createElement('input')
 		const counterPlus = document.createElement('button')
 		const counterMinus = document.createElement('button')
+
+		const price = document.querySelector('.products__price')
+		const priceFinal = document.createElement('p')
+		priceFinal.textContent = price.textContent;
+		// console.log(priceFinal.textContent);
+
+
 		counterInput.value = 1;
 		counterMinus.textContent = '-'
 		counterPlus.textContent = '+'
 		counter.append(counterPlus,counterInput, counterMinus);
-		clone.append(counter)
+		clone.append(counter, priceFinal)
 
 		counterPlus.addEventListener('click', () => {
-			counterInput.value = Number(counterInput.value) + 1;
-			console.log(typeof(counterInput.value));
+			// const priceFinal = document.createElement('p')
+			// const price = document.querySelector('.products__price')
+			// priceFinal.textContent = Number(priceFinal.textContent) - 1
 
+			counterInput.value = Number(counterInput.value) + 1;
+			// priceFinal.textContent = Number(priceFinal.textContent) * Number(price.textContent)
+			priceFinal.textContent = Number(priceFinal.textContent) + Number(price.textContent)
+			console.log(priceFinal.textContent);
+			// priceFinal.value = price.textContent
+			// priceFinal.textContent *= Number(counterInput.value)
+
+			// console.log(priceFinal.value *= Number(counterInput.value))
 		});
 		counterMinus.addEventListener('click', () => {
-		if(counterInput.value >0){
-			counterInput.value -=1;
-		}else{
-			alert("you cannot achive <0");
-		}
+			if(counterInput.value >0){
+				counterInput.value -= 1;
+				// const price = document.querySelector('.products__price')
+				// console.log(price.textContent);
+			}else{
+				alert("you cannot achive <0");
+			}
 		
 		});
 
