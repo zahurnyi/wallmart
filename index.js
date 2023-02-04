@@ -78,12 +78,12 @@ const addingProducts = () => {
 
 		});
 		counterMinus.addEventListener('click', () => {
-			counterInput.value -= 1;
-			console.log(typeof(counterInput.value));
-
-			// if (counterInput.value < 0) {
-			// 	alert('stop')
-			// }
+		if(counterInput.value >0){
+			counterInput.value -=1;
+		}else{
+			alert("you cannot achive <0");
+		}
+		
 		});
 
 		basket.append(clone)
