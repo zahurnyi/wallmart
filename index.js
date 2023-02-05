@@ -82,28 +82,16 @@ const addingProducts = () => {
 		clone.append(counter, priceFinal)
 
 		counterPlus.addEventListener('click', () => {
-			// const priceFinal = document.createElement('p')
-			// const price = document.querySelector('.products__price')
-			// priceFinal.textContent = Number(priceFinal.textContent) - 1
-
 			counterInput.value = Number(counterInput.value) + 1;
-			// priceFinal.textContent = Number(priceFinal.textContent) * Number(price.textContent)
-			priceFinal.textContent = Number(priceFinal.textContent) + Number(price.textContent)
-			console.log(priceFinal.textContent);
-			// priceFinal.value = price.textContent
-			// priceFinal.textContent *= Number(counterInput.value)
-
-			// console.log(priceFinal.value *= Number(counterInput.value))
+			priceFinal.textContent = Number(priceFinal.textContent) + Number(price.textContent);
 		});
 		counterMinus.addEventListener('click', () => {
 			if(counterInput.value >0){
 				counterInput.value -= 1;
-				// const price = document.querySelector('.products__price')
-				// console.log(price.textContent);
+				priceFinal.textContent = Number(priceFinal.textContent) - Number(price.textContent);
 			}else{
 				alert("you cannot achive <0");
 			}
-		
 		});
 
 		basket.append(clone)
