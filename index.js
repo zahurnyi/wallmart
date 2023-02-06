@@ -11,7 +11,6 @@ const items = document.querySelectorAll('.products__item');
 const calculating = document.querySelector('.calculate');
 const closeCalculateBtn = document.createElement('button')
 
-
 wrapper.append(buttons)
 buttons.append(btnAdd, btnCount, btnClear)
 productsOpen.append(productsClose, productsAdd);
@@ -54,9 +53,6 @@ const closeMenu = () => {
 	})
 }
 
-
-
-
 const addingProducts = () => {
 	items.forEach(item => {
 	if (item.classList.contains('products__active')) {
@@ -64,35 +60,38 @@ const addingProducts = () => {
 		const clone = item.cloneNode(true)
 		clone.style.width = "100%"
 
-		const counter = document.createElement('div')
-		const counterInput = document.createElement('input')
+		const counterWrapper = document.createElement('div')
+		const counterInput = document.createElement('div')
 		const counterPlus = document.createElement('button')
 		const counterMinus = document.createElement('button')
 
+		counterWrapper.style.display = 'flex';
+
 		const price = document.querySelector('.products__price')
-		const priceFinal = document.createElement('p')
-		priceFinal.textContent = price.textContent;
-		// console.log(priceFinal.textContent);
+		const priceFinal = document.createElement('span');
+		price.textContent = `${price.textContent}`
+		priceFinal.textContent = `${price.textContent} UAH`;
 
-
-		counterInput.value = 1;
+		counterInput.textContent = '1';
 		counterMinus.textContent = '-'
 		counterPlus.textContent = '+'
-		counter.append(counterPlus,counterInput, counterMinus);
-		clone.append(counter, priceFinal)
+		counterWrapper.append(counterPlus,counterInput, counterMinus);
+		clone.append(counterWrapper, priceFinal);
 
-		counterPlus.addEventListener('click', () => {
-			counterInput.value = Number(counterInput.value) + 1;
-			priceFinal.textContent = Number(priceFinal.textContent) + Number(price.textContent);
-		});
-		counterMinus.addEventListener('click', () => {
-			if(counterInput.value >0){
-				counterInput.value -= 1;
-				priceFinal.textContent = Number(priceFinal.textContent) - Number(price.textContent);
-			}else{
-				alert("you cannot achive <0");
+		let counter = 0;
+		const changePrice = (action, price = 10) => {
+			if (action === 'plus') {
+				counter += 1;
+			} else {
+				if (counter > 0) 
+					counter -= 1;
 			}
-		});
+			counterInput.textContent = counter;
+			priceFinal.textContent = `${counter * price} UAH`
+		};
+
+		counterPlus.onclick = () => changePrice('plus')
+		counterMinus.onclick = () => changePrice('minus')
 
 		basket.append(clone)
 		productsOpen.style.display = 'none'
