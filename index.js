@@ -35,7 +35,7 @@ items.forEach(item => {
 	const itemAdd = () => {
 		item.classList.toggle('products__active')
 	}
-	item.addEventListener('click', itemAdd)
+	item.onclick = () => itemAdd();
 })
 
 const openProducts = () => {
@@ -93,11 +93,11 @@ const addingProducts = () => {
 		counterPlus.onclick = () => changePrice('plus')
 		counterMinus.onclick = () => changePrice('minus')
 
-		basket.append(clone)
+		basket.append(clone)	
 		productsOpen.style.display = 'none'
 		item.classList.remove('products__active')
 	} else {
-		productsClose.addEventListener('click', closeMenu)
+		productsClose.onclick = () => closeMenu();
 	}
 })
 }
@@ -112,11 +112,16 @@ const closeCalculate = () => {
 	calculating.style.display = 'none'
 }
 
-productsAdd.addEventListener('click', addingProducts)
-btnCount.addEventListener('click', openCalculate);
-btnClear.addEventListener('click', clearProducts)
-closeCalculateBtn.addEventListener('click', closeCalculate)
-btnAdd.addEventListener('click', openProducts)
-productsClose.addEventListener('click', closeMenu)
+productsAdd.onclick = () => addingProducts()
+btnCount.onclick = () => openCalculate();
+btnClear.onclick = () => clearProducts();
+closeCalculateBtn.onclick = () => closeCalculate();
+btnAdd.onclick = () => openProducts();
+productsClose.onclick = () => closeMenu();
 
-
+// productsAdd.addEventListener('click', addingProducts)
+// btnCount.addEventListener('click', openCalculate);
+// btnClear.addEventListener('click', clearProducts)
+// closeCalculateBtn.addEventListener('click', closeCalculate)
+// btnAdd.addEventListener('click', openProducts)
+// productsClose.addEventListener('click', closeMenu)
