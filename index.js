@@ -1,28 +1,36 @@
+const wrapper = document.createElement('div')
+const basket = document.createElement('div')
+const buttons = document.createElement('div')
+const calculating = document.createElement('div');
+
+const products = document.createElement('div')
+const cards = document.createElement('div')
+const card = document.createElement('div')
 const btnAdd = document.createElement('button')
 const btnCount = document.createElement('button')
 const btnClear = document.createElement('button')
-const buttons = document.createElement('div')
-const wrapper = document.querySelector('.wrapper')
-const basket = document.querySelector('.basket')
-const productsOpen = document.querySelector('.products')
 const productsClose = document.createElement('button');
 const productsAdd = document.createElement('button');
-const items = document.querySelectorAll('.products__item');
-const calculating = document.querySelector('.calculate');
 const closeCalculateBtn = document.createElement('button')
 
-wrapper.append(buttons)
+document.body.append(wrapper)
+wrapper.append(products,basket, buttons, calculating)
 buttons.append(btnAdd, btnCount, btnClear)
-productsOpen.append(productsClose, productsAdd);
-document.querySelector('body').append(wrapper)
+products.append(cards, productsClose, productsAdd);
+cards.append(card)
 
 btnAdd.classList.add('buttonAdd')
 btnCount.classList.add('buttonCount')
 btnClear.classList.add('buttonClear')
 buttons.classList.add('buttons')
-wrapper.classList.add('.wrapper')
+wrapper.classList.add('wrapper')
 productsAdd.classList.add('closeProducts');
 productsClose.classList.add('close');
+basket.classList.add('basket')
+products.classList.add('products')
+cards.classList.add('product__cards')
+card.classList.add('card')
+calculating.classList.add('calculate');
 
 btnAdd.textContent = 'choose products'
 btnCount.textContent = 'change counting'
@@ -30,16 +38,33 @@ btnClear.textContent = 'clear basket'
 productsClose.textContent = 'close';
 productsAdd.textContent = 'add';
 closeCalculateBtn.textContent = 'close'
+cards.innerHTML = `
+	<div class="card">
+		<h3 class="card__title">potatos</h3>
+		<p class="card__text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+		<span class="card__price">10</span>
+	</div>
+`
 
+for (let i = 0; i < 5; i++){
+	cards.innerHTML += `
+		<div class="card">
+		<h3 class="card__title">potatos</h3>
+		<p class="card__text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+		<span class="card__price">10</span>
+	</div>
+	`
+};
+const items = document.querySelectorAll('.card')
 items.forEach(item => {
 	const itemAdd = () => {
-		item.classList.toggle('products__active')
+		item.classList.toggle('card__active')
 	}
 	item.onclick = () => itemAdd();
 })
 
 const openProducts = () => {
-	productsOpen.style.display = 'block'
+	products.style.display = 'block'
 }
 
 const clearProducts = () => {
@@ -47,29 +72,29 @@ const clearProducts = () => {
 }
 
 const closeMenu = () => {
-	productsOpen.style.display = 'none'
+	products.style.display = 'none';
 	items.forEach(item => {
-		item.classList.remove('products__active')
+		item.classList.remove('card__active')
 	})
 }
 
 const addingProducts = () => {
 	items.forEach(item => {
-	if (item.classList.contains('products__active')) {
-		const basket = document.querySelector('.basket')
-		const clone = item.cloneNode(true)
-		clone.style.width = "100%"
+	if (item.classList.contains('card__active')) {
+		const basket = document.querySelector('.basket');
+		const clone = item.cloneNode(true);
+		clone.style.width = "100%";
 
-		const counterWrapper = document.createElement('div')
-		const counterInput = document.createElement('div')
-		const counterPlus = document.createElement('button')
-		const counterMinus = document.createElement('button')
+		const counterWrapper = document.createElement('div');
+		const counterInput = document.createElement('div');
+		const counterPlus = document.createElement('button');
+		const counterMinus = document.createElement('button');
 
 		counterWrapper.style.display = 'flex';
 
-		const price = document.querySelector('.products__price')
+		const price = document.querySelector('.card__price')
 		const priceFinal = document.createElement('span');
-		price.textContent = `${price.textContent}`
+		price.textContent = price.textContent;
 		priceFinal.textContent = `${price.textContent} UAH`;
 
 		counterInput.textContent = '1';
@@ -94,8 +119,8 @@ const addingProducts = () => {
 		counterMinus.onclick = () => changePrice('minus')
 
 		basket.append(clone)	
-		productsOpen.style.display = 'none'
-		item.classList.remove('products__active')
+		products.style.display = 'none'
+		item.classList.remove('card__active')
 	} else {
 		productsClose.onclick = () => closeMenu();
 	}
@@ -105,23 +130,15 @@ const addingProducts = () => {
 const openCalculate = () => {
 	calculating.style.display = 'block';
 	calculating.append(closeCalculateBtn)
-	openCalculate.append(closeCalculateBtn)
 }
 
 const closeCalculate = () => {
 	calculating.style.display = 'none'
 }
 
-productsAdd.onclick = () => addingProducts()
-btnCount.onclick = () => openCalculate();
-btnClear.onclick = () => clearProducts();
-closeCalculateBtn.onclick = () => closeCalculate();
 btnAdd.onclick = () => openProducts();
+btnClear.onclick = () => clearProducts();
+btnCount.onclick = () => openCalculate();
+closeCalculateBtn.onclick = () => closeCalculate();
 productsClose.onclick = () => closeMenu();
-
-// productsAdd.addEventListener('click', addingProducts)
-// btnCount.addEventListener('click', openCalculate);
-// btnClear.addEventListener('click', clearProducts)
-// closeCalculateBtn.addEventListener('click', closeCalculate)
-// btnAdd.addEventListener('click', openProducts)
-// productsClose.addEventListener('click', closeMenu)
+productsAdd.onclick = () => addingProducts()

@@ -125,6 +125,7 @@ table {
 	font-size: 1.5em;
 	background: hwb(144deg 23% 3% / 35%);
 	border-radius: 15px;
+	cursor: pointer;
 }
 
 .basket {
@@ -150,11 +151,11 @@ table {
 	width: 100%;
 	background-color: grey;
 }
-.products__items {
+.product__cards {
 	display: flex;
 	justify-content: space-between;
 }
-.products__item {
+.card {
 	border: 1px solid #000;
 	height: 100px;
 	width: 250px;
@@ -180,6 +181,6 @@ table {
 	transform: translate(-50%, -50%);
 }
 
-.products__active {
+.card__active {
 	background-color: yellow;
 }
