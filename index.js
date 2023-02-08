@@ -9,19 +9,21 @@ const card = document.createElement('div')
 const btnAdd = document.createElement('button')
 const btnCount = document.createElement('button')
 const btnClear = document.createElement('button')
+const btnReset = document.createElement('button')
 const productsClose = document.createElement('button');
 const productsAdd = document.createElement('button');
 const closeCalculateBtn = document.createElement('button')
 
 document.body.append(wrapper)
 wrapper.append(products,basket, buttons, calculating)
-buttons.append(btnAdd, btnCount, btnClear)
+buttons.append(btnAdd, btnCount, btnClear, btnReset)
 products.append(cards, productsClose, productsAdd);
 cards.append(card)
 
 btnAdd.classList.add('buttonAdd')
 btnCount.classList.add('buttonCount')
 btnClear.classList.add('buttonClear')
+btnReset.classList.add('button__reset')
 buttons.classList.add('buttons')
 wrapper.classList.add('wrapper')
 productsAdd.classList.add('closeProducts');
@@ -38,6 +40,9 @@ btnClear.textContent = 'clear basket'
 productsClose.textContent = 'close';
 productsAdd.textContent = 'add';
 closeCalculateBtn.textContent = 'close'
+btnReset.textContent = 'reset items'
+
+
 cards.innerHTML = `
 	<div class="card">
 		<h3 class="card__title">potatos</h3>
@@ -78,6 +83,15 @@ const closeMenu = () => {
 	})
 }
 
+const openCalculate = () => {
+	calculating.style.display = 'block';
+	calculating.append(closeCalculateBtn)
+}
+
+const closeCalculate = () => {
+	calculating.style.display = 'none'
+}
+
 const addingProducts = () => {
 	items.forEach(item => {
 	if (item.classList.contains('card__active')) {
@@ -89,34 +103,52 @@ const addingProducts = () => {
 		const counterInput = document.createElement('div');
 		const counterPlus = document.createElement('button');
 		const counterMinus = document.createElement('button');
+		const counterReset = document.createElement('button');
+		const counterRemove = document.createElement('button');
 
 		counterWrapper.style.display = 'flex';
 
 		const price = document.querySelector('.card__price')
 		const priceFinal = document.createElement('span');
-		price.textContent = price.textContent;
+		// price.textContent = price.textContent;
 		priceFinal.textContent = `${price.textContent} UAH`;
+
+		counterInput.classList.add('counter__input')
+		priceFinal.classList.add('price__final')
 
 		counterInput.textContent = '1';
 		counterMinus.textContent = '-'
 		counterPlus.textContent = '+'
-		counterWrapper.append(counterPlus,counterInput, counterMinus);
+		counterReset.textContent = 'reset'
+		counterRemove.textContent = 'X'
+
+		counterRemove.classList.add('counter__remove')
+
+		counterWrapper.append(counterPlus,counterInput, counterMinus, counterReset, counterRemove);
 		clone.append(counterWrapper, priceFinal);
 
 		let counter = 0;
 		const changePrice = (action, price = 10) => {
 			if (action === 'plus') {
 				counter += 1;
+			} else if (action === 'reset') {
+				counter = 1;
 			} else {
 				if (counter > 0) 
 					counter -= 1;
-			}
+			} 
 			counterInput.textContent = counter;
 			priceFinal.textContent = `${counter * price} UAH`
 		};
 
+		const removeItem = () => {
+			clone.remove()
+		}
+
 		counterPlus.onclick = () => changePrice('plus')
 		counterMinus.onclick = () => changePrice('minus')
+		counterReset.onclick = () => changePrice('reset')
+		counterRemove.onclick = () => removeItem()
 
 		basket.append(clone)	
 		products.style.display = 'none'
@@ -127,14 +159,26 @@ const addingProducts = () => {
 })
 }
 
-const openCalculate = () => {
-	calculating.style.display = 'block';
-	calculating.append(closeCalculateBtn)
-}
+const itemsReset = () => {
+	const resetInput = document.querySelectorAll('.counter__input')
+	const resetPrice = document.querySelectorAll('.price__final')
+	const price = document.querySelector('.card__price')
 
-const closeCalculate = () => {
-	calculating.style.display = 'none'
+	resetInput.forEach(item => console.log(item.textContent))
+	resetPrice.forEach(item => console.log(item.textContent))
+	
+	// console.log(resetInput);
+	// console.log(resetPrice);
+
+	// let counter = 0;
+	// resetInput.forEach(card => {
+	// 	card.innerHTML = 1
+	// });
+	// resetPrice.forEach(card => {
+	// 	card.value = price.textContent
+	// });
 }
+btnReset.onclick = () => changePrice('reset');
 
 btnAdd.onclick = () => openProducts();
 btnClear.onclick = () => clearProducts();

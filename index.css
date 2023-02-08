@@ -120,7 +120,8 @@ table {
 
 .buttonAdd,
 .buttonCount,
-.buttonClear {
+.buttonClear,
+.button__reset {
   padding: 13px 24px;
 	font-size: 1.5em;
 	background: hwb(144deg 23% 3% / 35%);
@@ -183,4 +184,11 @@ table {
 
 .card__active {
 	background-color: yellow;
+	position: relative;
+}
+
+.counter__remove {
+	position: absolute;
+	top: 45%;
+	right: 5%;
 }
