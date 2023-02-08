@@ -164,21 +164,21 @@ const itemsReset = () => {
 	const resetPrice = document.querySelectorAll('.price__final')
 	const price = document.querySelector('.card__price')
 
-	resetInput.forEach(item => console.log(item.textContent))
-	resetPrice.forEach(item => console.log(item.textContent))
+	// resetInput.forEach(item => console.log(item.textContent))
+	// resetPrice.forEach(item => console.log(item.textContent))
 	
 	// console.log(resetInput);
 	// console.log(resetPrice);
 
 	// let counter = 0;
-	// resetInput.forEach(card => {
-	// 	card.innerHTML = 1
-	// });
-	// resetPrice.forEach(card => {
-	// 	card.value = price.textContent
-	// });
+	resetInput.forEach(card => {
+		card.innerHTML = 1
+	});
+	resetPrice.forEach(card => {
+		card.textContent = price.textContent
+	});
 }
-btnReset.onclick = () => changePrice('reset');
+btnReset.onclick = () => itemsReset();
 
 btnAdd.onclick = () => openProducts();
 btnClear.onclick = () => clearProducts();
