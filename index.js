@@ -68,7 +68,7 @@ const addingProducts = () => {
 		counterInput.classList.add('counter__input')
 		priceFinal.classList.add('price__final')
 
-		counterInput.textContent = '1';
+		counterInput.textContent = `1 item`;
 		counterMinus.textContent = '-';
 		counterPlus.textContent = '+';
 		counterReset.textContent = 'reset';
@@ -79,13 +79,12 @@ const addingProducts = () => {
 		counterWrapper.append(counterPlus,counterInput, counterMinus, counterReset, counterRemove);
 		clone.append(counterWrapper, priceFinal);
 
-		let counter = 0;
+		let counter = 1;
 		const changePrice = (action, price = article.price) => {
 			if (action === 'plus') {
 				counter += 1;
 			} else if (action === 'reset') {
 				counter = 1;
-				priceFinal.textContent = price.textContent
 			} else if (action === 'remove') {
 				clone.remove()
 			}
@@ -93,8 +92,8 @@ const addingProducts = () => {
 				if (counter > 0) 
 					counter -= 1;
 			} 
-			counterInput.textContent = counter;
-			priceFinal.textContent = `${counter * price}`
+			counterInput.textContent = `${counter} items`;
+			priceFinal.textContent = `${counter * price} UAH`
 		};
 
 		counterPlus.onclick = () => changePrice('plus')
@@ -117,7 +116,7 @@ const itemsReset = () => {
 	const price = document.querySelector('.card__price')
 
 	resetInput.forEach(input => {
-		input.textContent = 1;
+		input.textContent = `1 item`;
 	});
 	resetPrice.forEach(card => {
 		card.textContent = price.textContent;
