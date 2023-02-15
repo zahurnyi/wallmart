@@ -1,27 +1,73 @@
 export class Card {
-	constructor(parentElement, title, descr, price, className) {
-		this.parent = document.querySelector(parentElement)
-		this.title = title;
-		this.descr = descr;
-		this.price = price;
-		this.className = className;
+	constructor(parentElement, tagName, title, descr, price, className) {
 		this.transfer = 40;
+		this.price = price;
+		const element = document.querySelector(parentElement);
+		const card = document.createElement(tagName);
+		card.className = className;
+		card.innerHTML = `
+			<div>
+				<h3 class="card__title">${title}</h3>
+				<p class="card__text">${descr}</p>
+				<span class="card__price">${price} UAH</span>
+			</div>
+		`;
+		if (element) {
+			element.append(card) 
+		}
 	}
 
 	changeToUAH() {
 		this.price = this.price * this.transfer;
 	}
 
-	render() {
-		this.changeToUAH();
-		const card = document.createElement('div');
-		card.innerHTML = `
-		<div class=${this.className}>
-		<h3 class="card__title">${this.title}</h3>
-		<p class="card__text">${this.descr}</p>
-		<span class="card__price">${this.price} UAH</span>
-		</div>
-		`;
-		this.parent.append(card)
+	destroy() {
+		// this.className.classist.remove()
 	}
 }
+
+
+export let arrayCards = [
+	new Card(
+	'.product__cards',
+	'div',
+	'ROMATOS',
+	'loremloremlorem',
+	10,
+	'card',
+	),
+	new Card(
+	'.product__cards',
+	'div',
+	'ROMATOS',
+	'loremloremlorem',
+	35,
+	'card',
+	),
+	new Card(
+	'.product__cards',
+	'div',
+	'japanese',
+	'loremloremlorem',
+	18,
+	'card',
+	),
+	new Card(
+	'.product__cards',
+	'div',
+	'indusi',
+	'loremloremlorem',
+	8,
+	'card',
+	),
+	new Card(
+	'.product__cards',
+	'div',
+	'indusi',
+	'loremloremlorem',
+	828,
+	'card',
+	),
+
+]
+

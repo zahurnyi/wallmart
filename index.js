@@ -1,16 +1,9 @@
 import { wrapper,buttons, basket, calculating, products, cards, card, productsAdd, productsClose, closeCalculateBtn, btnReset, btnAdd, btnCount, btnClear }
  from './modules/variables.js'
 
-import { Card } from './modules/card.js'
+import { Card, arrayCards } from './modules/card.js'
+import { Buttons } from './modules/buttons.js'
 
-const article = new Card(
-	'.product__cards',
-	'tomatos',
-	'loremloremlorem',
-	10,
-	'card',
-)
-article.render();
 
 const items = document.querySelectorAll('.card')
 items.forEach(item => {
@@ -60,10 +53,19 @@ const addingProducts = () => {
 
 		counterWrapper.style.display = 'flex';
 
-		const price = document.querySelector('.card__price')
+		let resultPrices = []
+		arrayCards.forEach(item => {
+			resultPrices.push(item.price);
+		})
+		console.log(resultPrices);
+		resultPrices.forEach(value => {
+			// console.log(value);
+		})
+
+		const price = document.querySelector('.card__price');
+		price.textContent = 10; 
 		const priceFinal = document.createElement('span');
-		price.textContent = price.textContent;
-		priceFinal.textContent = `${price.textContent}`;
+		priceFinal.textContent = price.textContent;
 
 		counterInput.classList.add('counter__input')
 		priceFinal.classList.add('price__final')
@@ -79,8 +81,9 @@ const addingProducts = () => {
 		counterWrapper.append(counterPlus,counterInput, counterMinus, counterReset, counterRemove);
 		clone.append(counterWrapper, priceFinal);
 
+	
 		let counter = 1;
-		const changePrice = (action, price = article.price) => {
+		const changePrice = (action, price = 10) => {
 			if (action === 'plus') {
 				counter += 1;
 			} else if (action === 'reset') {
