@@ -192,3 +192,14 @@ table {
 	top: 45%;
 	right: 5%;
 }
+
+.open__products,
+.close__products,
+.add__products,  
+.clear__products { 
+	padding: 13px 24px;
+	font-size: 1.5em;
+	background: skyblue;
+	border-radius: 15px;
+	cursor: pointer;
+}

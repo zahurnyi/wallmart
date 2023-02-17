@@ -1,4 +1,3 @@
-// import { createCounter } from "./createCounter.js";
 export const createClone = () => {
 	const basket = document.querySelector('.basket');
 	const card = document.querySelectorAll('.card');

@@ -3,8 +3,6 @@ import { wrapper,buttons, basket, calculating, products, cards, card, productsAd
 
 import { Card, arrayCards } from './modules/card.js'
 import { Buttons } from './modules/buttons.js'
-// import { changePrice } from './modules/counter.js'
-// import { createCounter } from './modules/createCounter.js'
 import { createClone } from './modules/cloneNode.js'
 // import { counterDelete } from './modules/counterRemove.js'
 
@@ -69,7 +67,12 @@ const itemsReset = () => {
 		// console.log(input.textContent);
 	});
 
-
+	const plus = document.querySelectorAll('.counter__plus')
+	console.log(plus);
+	plus.forEach(btn => {
+		btn.onclick = ()=> alert('+')
+	})
+	
 }
 
 btnReset.onclick = () => itemsReset();

@@ -2,15 +2,31 @@ export class Card {
 	constructor(parentElement, tagName, title, descr, price, className) {
 		this.transfer = 40;
 		this.price = price;
+		this.card = document.createElement(tagName);
+		this.card.className = className;
+		this.card.innerHTML = `
+		<div>
+			<h3 class="card__title">${title}</h3>
+			<p class="card__text">${descr}</p>
+			<span class="card__price">${this.price} UAH</span>
+		</div>
+	`;
+		parentElement.append(this.card)
+	}
 
+	createCounter() {
 		const counterWrapper = document.createElement('div');
 		const counterInput = document.createElement('div');
 		const counterPlus = document.createElement('button');
 		const counterMinus = document.createElement('button');
 		const counterReset = document.createElement('button');
 		const priceFinal = document.createElement('span');
-		
+
+		counterPlus.classList.add('counter__plus')
+		counterMinus.classList.add('counter__minus')
+		counterReset.classList.add('counter__reset')
 		priceFinal.classList.add('price__final')
+
 		priceFinal.textContent = this.price
 		
 		counterInput.classList.add('counter__input')
@@ -22,6 +38,7 @@ export class Card {
 		counterWrapper.append(counterPlus, counterInput, counterMinus, counterReset, priceFinal);
 		
 		counterWrapper.style.display = 'flex';
+		this.card.append(counterWrapper)
 
 		let counter = 1;
 		const changePrice = (action, price = this.price) => {
@@ -40,30 +57,27 @@ export class Card {
 			priceFinal.textContent = `${counter * price} UAH`
 		};
 
-		counterPlus.onclick = () => changePrice('plus');
-		counterMinus.onclick = () => changePrice('minus');
-		counterReset.onclick = () => changePrice('reset');
-
-		const card = document.createElement(tagName);
-		card.className = className;
-		card.innerHTML = `
-		<div>
-			<h3 class="card__title">${title}</h3>
-			<p class="card__text">${descr}</p>
-			<span class="card__price">${this.price} UAH</span>
-		</div>
-	`;
-		card.append(counterWrapper)
-		parentElement.append(card)
-	
+		counterPlus.onclick = (event) => {
+			event.stopPropagation();
+			if (this.card.classList.contains('card__active')) {
+				changePrice('plus')
+			}
+		};
+		counterMinus.onclick = (event) => {
+			event.stopPropagation();
+			if (this.card.classList.contains('card__active')) {
+				changePrice('minus')
+			}
+		};
+		counterReset.onclick = (event) => {
+			event.stopPropagation();
+			if (this.card.classList.contains('card__active')) {
+				changePrice('reset')
+			}
+		};
 	}
 
-	// changeToUAH() {
-	// 	this.price = this.price * this.transfer;
-	// };
-
 }
-
 
 export let arrayCards = [
 	// new Card(
@@ -81,7 +95,15 @@ export let arrayCards = [
 	'loremloremlorem',
 	14,
 	'card',
-	),
+	).createCounter(),
+	new Card(
+	document.querySelector('.product__cards'),
+	'div',
+	'ROMATOS',
+	'loremloremlorem',
+	50,
+	'card',
+	).createCounter(),
 	new Card(
 	document.querySelector('.product__cards'),
 	'div',
@@ -89,7 +111,7 @@ export let arrayCards = [
 	'loremloremlorem',
 	100,
 	'card',
-	),
+	).createCounter(),
 	new Card(
 	document.querySelector('.product__cards'),
 	'div',
@@ -97,7 +119,7 @@ export let arrayCards = [
 	'loremloremlorem',
 	88,
 	'card',
-	),
+	).createCounter(),
 	new Card(
 	document.querySelector('.product__cards'),
 	'div',
@@ -105,7 +127,7 @@ export let arrayCards = [
 	'loremloremlorem',
 	777,
 	'card',
-	),
+	).createCounter(),
 	new Card(
 	document.querySelector('.product__cards'),
 	'div',
@@ -113,6 +135,6 @@ export let arrayCards = [
 	'loremloremlorem',
 	1240,
 	'card',
-	),
+	).createCounter(),
 
 ]
