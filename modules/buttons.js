@@ -1,4 +1,3 @@
-import { Card } from "./card.js";
 export class Buttons  {
 	constructor(parentElement, tagName, textContent, className) {
 		// const element = document.querySelector(parentElement);
@@ -44,30 +43,30 @@ export class Buttons  {
 	}
 }
 
-new Buttons(
-	document.body,
-	'button',
-	'choose products',
-	'open__products',
-).openProducts()
+// new Buttons(
+// 	document.body,
+// 	'button',
+// 	'choose products',
+// 	'open__products',
+// ).openProducts()
 
-new Buttons(
-	document.body,
-	'button',
-	'clear products',
-	'clear__products',
-).clearProducts()
+// new Buttons(
+// 	document.body,
+// 	'button',
+// 	'clear products',
+// 	'clear__products',
+// ).clearProducts()
 
-new Buttons(
-	document.querySelector('.products'),
-	'button',
-	'close',
-	'close__products',
-).closeProducts()
+// new Buttons(
+// 	document.querySelector('.products'),
+// 	'button',
+// 	'close',
+// 	'close__products',
+// ).closeProducts()
 
-new Buttons(
-	document.querySelector('.products'),
-	'button',
-	'add',
-	'add__products',
-).addProducts()
+// new Buttons(
+// 	document.querySelector('.products'),
+// 	'button',
+// 	'add',
+// 	'add__products',
+// ).addProducts()
