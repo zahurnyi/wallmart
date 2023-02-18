@@ -1,9 +1,7 @@
 export class Buttons  {
 	constructor(parentElement, tagName, textContent, className) {
-		// const element = document.querySelector(parentElement);
 		this.button = document.createElement(tagName);
 		this.button.onclick = () => onclick;
-		
 		this.button.textContent = textContent;
 		this.button.className = className;
 		parentElement.append(this.button);
@@ -43,30 +41,30 @@ export class Buttons  {
 	}
 }
 
-// new Buttons(
-// 	document.body,
-// 	'button',
-// 	'choose products',
-// 	'open__products',
-// ).openProducts()
+new Buttons(
+	document.querySelector('.buttons'),
+	'button',
+	'choose products',
+	'open__products',
+).openProducts()
 
-// new Buttons(
-// 	document.body,
-// 	'button',
-// 	'clear products',
-// 	'clear__products',
-// ).clearProducts()
+new Buttons(
+	document.querySelector('.buttons'),
+	'button',
+	'clear products',
+	'clear__products',
+).clearProducts()
 
-// new Buttons(
-// 	document.querySelector('.products'),
-// 	'button',
-// 	'close',
-// 	'close__products',
-// ).closeProducts()
+new Buttons(
+	document.querySelector('.products'),
+	'button',
+	'close',
+	'close__products',
+).closeProducts()
 
-// new Buttons(
-// 	document.querySelector('.products'),
-// 	'button',
-// 	'add',
-// 	'add__products',
-// ).addProducts()
+new Buttons(
+	document.querySelector('.products'),
+	'button',
+	'add',
+	'add__products',
+).addProducts()

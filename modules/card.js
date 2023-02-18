@@ -26,22 +26,21 @@ export class Card {
 		counterMinus.classList.add('counter__minus')
 		counterReset.classList.add('counter__reset')
 		priceFinal.classList.add('price__final')
-
-		priceFinal.textContent = this.price
-		
 		counterInput.classList.add('counter__input')
+
+		priceFinal.textContent = `${this.price} UAH`
+		
 		counterInput.textContent = 1;
 		counterMinus.textContent = '-';
 		counterPlus.textContent = '+';
 		counterReset.textContent = 'reset';
 
-		counterWrapper.append(counterPlus, counterInput, counterMinus, counterReset, priceFinal);
-		
+		counterWrapper.append(counterPlus, counterInput, counterMinus, counterReset, priceFinal);		
 		counterWrapper.style.display = 'flex';
 		this.card.append(counterWrapper)
 
 		let counter = 1;
-		const changePrice = (action, price = this.price) => {
+		const updatePrice  = (action, price = this.price) => {
 			if (action === 'plus') {
 				counter += 1;
 			} else if (action === 'reset') {
@@ -60,19 +59,19 @@ export class Card {
 		counterPlus.onclick = (event) => {
 			event.stopPropagation();
 			if (this.card.classList.contains('card__active')) {
-				changePrice('plus')
+				updatePrice ('plus')
 			}
 		};
 		counterMinus.onclick = (event) => {
 			event.stopPropagation();
 			if (this.card.classList.contains('card__active')) {
-				changePrice('minus')
+				updatePrice ('minus')
 			}
 		};
 		counterReset.onclick = (event) => {
 			event.stopPropagation();
 			if (this.card.classList.contains('card__active')) {
-				changePrice('reset')
+				updatePrice ('reset')
 			}
 		};
 	}
