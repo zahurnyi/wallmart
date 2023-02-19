@@ -102,6 +102,12 @@ table {
 
 /* ======================================== */
 
+.products__page{
+	height: 100vh;
+	background: grey;
+	text-align: center;
+}
+
 .wrapper {
   display: flex;
   align-items: center;
@@ -118,10 +124,8 @@ table {
   justify-content: space-between;
 }
 
-.buttonAdd,
-.buttonCount,
-.buttonClear,
-.button__reset {
+.basket__button,
+.control__button {
   padding: 13px 24px;
   font-size: 1.5em;
   background: hwb(144deg 23% 3% / 35%);
@@ -140,57 +144,25 @@ table {
   padding: 10px 20px;
   background-color: #ffffff8e;
 }
-
-.products {
-  display: none;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  height: 100vh;
-  width: 100%;
-  background-color: grey;
+.control__button {
+	background-color: skyblue;
 }
+
 .product__cards {
   display: flex;
   justify-content: space-between;
 }
-.card {
+.product {
   border: 1px solid #000;
   height: 100px;
   width: 250px;
   border-radius: 15px;
   padding: 10px 20px;
 }
-.products__title {
-}
-.products__text {
-}
 
-.close {
-}
-
-.calculate,
-.calculator {
-  display: none;
-  background-color: red;
-  width: 70%;
-  height: 60%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.card__active {
+.product__active {
   background-color: yellow;
   position: relative;
-}
-
-.counter__remove {
-  position: absolute;
-  top: 45%;
-  right: 5%;
 }
 
 .open__products,
@@ -202,4 +174,10 @@ table {
   background: skyblue;
   border-radius: 15px;
   cursor: pointer;
+}
+
+.basket__page {
+	background-color: green;
+	height: 100vh;
+	text-align: center;
 }

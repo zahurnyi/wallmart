@@ -1,20 +1,20 @@
-export class Card {
-	constructor(parentElement, tagName, title, descr, price, className) {
+export class Products{
+	constructor(parentElement, tagName, title, description, price, className) {
 		this.transfer = 40;
 		this.price = price;
-		this.card = document.createElement(tagName);
-		this.card.className = className;
-		this.card.innerHTML = `
+		this.product = document.createElement(tagName);
+		this.product.className = className;
+		this.product.innerHTML = `
 		<div>
-			<h3 class="card__title">${title}</h3>
-			<p class="card__text">${descr}</p>
-			<span class="card__price">${this.price} UAH</span>
+			<h3 class="product__title">${title}</h3>
+			<p class="product__text">${description}</p>
+			<span class="product__price">${this.price} UAH</span>
 		</div>
 	`;
-		parentElement.append(this.card)
+		parentElement.append(this.product)
 	}
 
-	createCounter() {
+	addCounter() {
 		const counterWrapper = document.createElement('div');
 		const counterInput = document.createElement('div');
 		const counterPlus = document.createElement('button');
@@ -37,7 +37,7 @@ export class Card {
 
 		counterWrapper.append(counterPlus, counterInput, counterMinus, counterReset, priceFinal);		
 		counterWrapper.style.display = 'flex';
-		this.card.append(counterWrapper)
+		this.product.append(counterWrapper)
 
 		let counter = 1;
 		const updatePrice  = (action, price = this.price) => {
@@ -58,19 +58,19 @@ export class Card {
 
 		counterPlus.onclick = (event) => {
 			event.stopPropagation();
-			if (this.card.classList.contains('card__active')) {
+			if (this.product.classList.contains('product__active')) {
 				updatePrice ('plus')
 			}
 		};
 		counterMinus.onclick = (event) => {
 			event.stopPropagation();
-			if (this.card.classList.contains('card__active')) {
+			if (this.product.classList.contains('product__active')) {
 				updatePrice ('minus')
 			}
 		};
 		counterReset.onclick = (event) => {
 			event.stopPropagation();
-			if (this.card.classList.contains('card__active')) {
+			if (this.product.classList.contains('product__active')) {
 				updatePrice ('reset')
 			}
 		};
@@ -78,62 +78,14 @@ export class Card {
 
 }
 
-export let arrayCards = [
-	// new Card(
-	// document.body,
-	// 'div',
-	// 'ROMATOS',
-	// 'loremloremlorem',
-	// 10,
-	// 'card',
-	// ),
-	new Card(
-	document.querySelector('.product__cards'),
+export let products= [
+	new Products(
+	document.body,
 	'div',
-	'ROMATOS',
-	'loremloremlorem',
-	14,
-	'card',
-	).createCounter(),
-	new Card(
-	document.querySelector('.product__cards'),
-	'div',
-	'ROMATOS',
-	'loremloremlorem',
-	50,
-	'card',
-	).createCounter(),
-	new Card(
-	document.querySelector('.product__cards'),
-	'div',
-	'ROMATOS',
-	'loremloremlorem',
-	100,
-	'card',
-	).createCounter(),
-	new Card(
-	document.querySelector('.product__cards'),
-	'div',
-	'ROMATOS',
-	'loremloremlorem',
-	88,
-	'card',
-	).createCounter(),
-	new Card(
-	document.querySelector('.product__cards'),
-	'div',
-	'ROMATOS',
-	'loremloremlorem',
-	777,
-	'card',
-	).createCounter(),
-	new Card(
-	document.querySelector('.product__cards'),
-	'div',
-	'ROMATOS',
-	'loremloremlorem',
-	1240,
-	'card',
-	).createCounter(),
+	'Milk',
+	'some text or description',
+	12,
+	'product',
+	).addCounter(),
 
 ]
