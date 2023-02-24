@@ -1,7 +1,11 @@
-import { basketPage } from './modules/basket-page.js'
-import { BasketPageControls } from './modules/basket-controls.js'
-import { ProductsPage } from './modules/products-page.js'
-import { Products } from './modules/products.js'
-import { ControlPanel } from './modules/control-panel.js'
+import { Control } from './modules/Control.js'
+import { BasketPage } from './modules/BasketPage.js'
+import { BasketControls } from './modules/BasketControls.js'
+import { Products } from './modules/Products.js'
+import { ControlPanel } from './modules/ControlPanel.js'
+import { Application } from './modules/application.js'
 
+
+
+const app = new Application(document.body)
 
